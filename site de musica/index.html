@@ -1,0 +1,380 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<script src="wavesurfer.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- <link rel="stylesheet" href="assets/css/style.css">-->
+    <title>Principal</title>
+</head>
+<style>
+    *{
+    padding: 0;
+    margin: 0;
+    font-family:'Inter' sans-serif;
+}
+header{
+    background-color: rgb(57, 56, 55);
+    box-shadow: 0px 3px 10px rgba(251, 171, 11, 0);
+}
+.nav-bar{
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 6rem;
+}
+.logo{
+    display: flex;
+    align-items: center;
+   
+}
+.logo h1{
+    color: white;
+    
+}
+.nav-list{
+    display: flex;
+    align-items: center;
+}
+.nav-list ul{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+.nav-item{
+    margin: 0 15px;
+}
+.nav-link{
+    text-decoration: none;
+    font-size: 1.15rem;
+    color: white;   
+    font-weight: 400;
+
+}
+.login-button button{
+    border: none;
+    background-color: transparent;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+
+.login-button button a{
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+}
+.mobile-menu-icon{
+    display: none;
+}
+.mobile-menu{
+    display: none;
+}
+
+@media screen and (max-width: 730px){
+    .nav-bar{
+        padding: 1.5rem 4rem;
+    }
+    .nav-item{
+        display: none;
+    }
+    .login-button{
+        display: none;
+        cursor: pointer;
+    }
+    .mobile-menu-icon{
+        display: block;
+    }
+    .mobile-menu-icon button{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+    .mobile-menu ul{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 1rem;
+    }
+    .mobile-menu .nav-item{
+        display: block;
+        padding-top: 1.2rem;
+    }
+    .mobile-menu .login-button{
+        display: block;
+        padding: 1rem 2rem;
+        cursor: pointer;
+    }
+    .mobile-menu .login-button button{
+        width: 100%;
+        cursor: pointer;
+   }
+    .open{
+        display: block;
+   }
+    #player {
+                width: 90%;
+                flex-direction: column;
+                padding: 5px;
+            }
+    #downloadLink {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+    #currentTitle, #currentArtist, #currentYear {
+                font-size: 7px; /* Reduz o tamanho do texto */
+            }
+
+}
+.galeria{
+    display: flex;
+    flex-wrap: wrap; /* Permite que as capas se movam para a linha seguinte se não houver espaço */
+}
+.musica{
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc; /* Borda do contêiner musica */
+    padding: 10px; /* Espaçamento interno */
+    margin: 10px; /* Espaçamento externo */
+    border-radius: 8px; /* Bordas arredondadas */
+    width: calc(33%-20px);
+}
+.capa:hover{
+    box-shadow: 0 0 10px rgba(0, 0.5, 0, 0.6);
+}
+.capa {
+    width: 150px; /* Largura da imagem */
+    height: auto; /* Altura automática para manter a proporção */
+    margin-right: 15px; /* Espaçamento à direita da imagem */
+    border-radius: 8px;
+    
+}
+.titulo {
+    font-size: 1em; /* Tamanho da fonte do título */
+    color: #333; /* Cor do texto */
+    
+}
+
+
+
+
+
+
+
+.rodape{
+    display: flex;
+    background-color: rgb(255, 77, 77);/* Cor de fundo do rodapé */
+    justify-content: center; 
+    height: 60px;
+    /*/////////////////////////////*/
+    position: fixed; /* Fixa o rodapé na parte inferior da página */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2px; /* Espaçamento interno do rodapé */
+    
+}
+
+.roda-link{
+    display: flex;
+    
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: rgb(255, 255, 255);   
+    font-weight: 250;
+    margin: 0 15px;
+    align-items: center;
+}
+#player {
+            
+            position: fixed;
+            bottom: 70px;
+            left:50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%; /* Ajuste a largura conforme necessário */
+            max-width: 600px; /* Limite a largura máxima */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+            border-radius: 20px;
+            
+    
+        }
+
+#info{
+    
+    display: flex;
+    align-items: center;
+    justify-self: column;
+    
+}
+
+#currentTitle, #currentArtist, #currentYear {
+                font-size: 20px; /*  tamanho do texto */
+                margin: 0 10px; /* espacamento entre linhas */
+           
+}
+#downloadLink {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin-left: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+</style>
+
+<body>
+   
+      
+    
+    <header>
+        <nav class="nav-bar">
+            
+            <div class="logo">
+                <h1>Wanitwa-ke</h1>
+            </div>
+            <div class="nav-list">
+                <ul>
+                    <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Account</a></li>   
+                </ul>
+            </div>
+            <div class="login-button">
+                  <button><a href="logout.php">Logout</a></button>
+            </div>
+
+            <div class="mobile-menu-icon">
+                 <button onclick="menuShow()"><img class="icon" src="assets/img/menu_white_36dp"alt=""></button>
+            </div>
+        </nav>
+        <div class="mobile-menu">
+                <ul>
+                    <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Account</a></li>
+                </ul>
+            <div class="login-button">
+            <button><a href="logout.php">Logout</a></button>
+            </div>
+        </div>
+    </header>
+    <script src="assets/js/script.js"></script>
+    <nav class="conteiner">
+        <div class="galeria">
+            <div class="musica" data-src="assets/music/Siso - foco2.mp3" data-title="Foco" data-artist="Siso" data-year="2024">
+                
+                <div>
+                <img src="assets/img/SisoftvultureBeijonaboca" alt="Capa da Música" class="capa">
+                <h2 class="titulo">Tema: Foco</h2>
+                <h2 class="artista">Artista: Siso</h2>
+                <h2 class="ano">Ano: 2024</h2>
+                </div>
+            </div>
+            <div class="musica" data-src="assets/music/Siso - Natural.mp3" data-title="Natural" data-artist="Siso" data-year="2025">
+               
+                <div>
+                    <img src="assets/img/SisoftvultureBeijonaboca" alt="Capa da Música" class="capa">
+                <h2 class="titulo">Tema: Natural</h2>
+                <h2 class="artista">Artista: Siso</h2>
+                <h2 class="ano">Ano: 2025</h2>
+                </div>
+            </div>
+            <div class="musica" data-src="assets/music/Siso - Telefone last.mp3" data-title="Telefone" data-artist="Siso" data-year="2024">
+                
+                <div>
+                    <img src="assets/img/SisoftvultureBeijonaboca" alt="Capa da Música" class="capa">
+                <h2 class="titulo">Tema: Telefone</h2>
+                <h2 class="artista">Artista: Siso</h2>
+                <h2 class="ano">Ano: 2025</h2>
+                </div>
+             </div>
+             
+        </div>
+        <div id="player">
+            <audio id="audioPlayer" controls></audio>
+              <div id="info">
+              <h2 id="currentArtist"></h2>
+              <h2 id="currentYear"></h2>
+              <h2 id="currentTitle"></h2>
+           </div>
+               <a id="downloadLink" href="#" download style="display: none";>Download</a>
+        </div>
+       
+        <footer class="rodape">
+          
+                   <a href="#" class="roda-link"><img src="assets/img/whatsapp-4451.svg"width="35" height="35"> Whatsapp</a>
+                   <a href="#" class="roda-link"><img src="assets/img/facebook-logo-108.svg"width="35" height="35">Facebook</a>
+                   <a href="#" class="roda-link"><img src="assets/img/black-instagram-logo.svg"width="35" height="35"> Instagram</a>
+        </footer>
+    </nav>
+
+
+
+    <script>
+    const audioPlayer = document.getElementById('audioPlayer');
+    const downloadLink = document.getElementById('downloadLink');
+    const musicList = document.querySelectorAll('.musica');
+    let currentMusicIndex = 0;
+
+    function playNextMusic() {
+        currentMusicIndex = (currentMusicIndex + 1) % musicList.length;
+        const nextMusic = musicList[currentMusicIndex];
+        const src = nextMusic.getAttribute('data-src');
+        const title = nextMusic.getAttribute('data-title');
+        const artist = nextMusic.getAttribute('data-artist');
+        const year = nextMusic.getAttribute('data-year');
+
+        audioPlayer.src = src;
+        document.getElementById('currentTitle').textContent = `Tema: ${title}`;
+        document.getElementById('currentArtist').textContent = `Artista: ${artist}`;
+        document.getElementById('currentYear').textContent = `Ano: ${year}`;
+        downloadLink.href = src;
+        downloadLink.download = title;
+
+        audioPlayer.play();
+    }
+        audioPlayer.addEventListener('play', function() {
+                downloadLink.style.display = 'block';
+                });
+                audioPlayer.addEventListener('pause', function() {
+                downloadLink.style.display = 'none';
+                });
+
+    audioPlayer.addEventListener('ended', playNextMusic);
+
+    musicList.forEach(item => {
+        item.addEventListener('click', function() {
+            const src = this.getAttribute('data-src');
+            const title = this.getAttribute('data-title');
+            const artist = this.getAttribute('data-artist');
+            const year = this.getAttribute('data-year');
+
+            audioPlayer.src = src;
+            document.getElementById('currentTitle').textContent = `Tema: ${title}`;
+            document.getElementById('currentArtist').textContent = `Artista: ${artist}`;
+            document.getElementById('currentYear').textContent = `Ano: ${year}`;
+            downloadLink.href = src;
+            downloadLink.download = title;
+
+            audioPlayer.play();
+        });
+    });
+</script>
+
+</body>
+</html>
